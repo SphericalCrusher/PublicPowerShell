@@ -1,7 +1,15 @@
 # Azure-based O365 Teams Bot.
 # Work in progress... -Jody Ingram
 
+
+
+read -sp "Define Azure Password: " AZ_PASS && echo && az login -u <username> -p $AZ_PASS
+$AzCred = Get-Credential -UserName <username>
+az login -u $AzCred.UserName -p $AzCred.GetNetworkCredential().Password
+
 # Manifest
+
+            }
 
   "Omega": [
     {
@@ -21,10 +29,7 @@
             {
               "title": "AzureCLI",
               "description": "Authenticates with your Azure CLI"
-							 read -sp "Define Azure Password: " AZ_PASS && echo && az login -u <username> -p $AZ_PASS
-							 $AzCred = Get-Credential -UserName <username>
-							 az login -u $AzCred.UserName -p $AzCred.GetNetworkCredential().Password
-            }
+						
           ]
         },
 
