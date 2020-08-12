@@ -2,6 +2,7 @@
 # Work in progress... -Jody Ingram
 
 
+# Azure Authentication 
 
 read -sp "Define Azure Password: " AZ_PASS && echo && az login -u <username> -p $AZ_PASS
 $AzCred = Get-Credential -UserName <username>
