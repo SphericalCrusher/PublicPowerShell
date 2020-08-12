@@ -29,6 +29,6 @@ az login -u $AzCred.UserName -p $AzCred.GetNetworkCredential().Password
             {
               "title": "AzureCLI",
               "description": "Authenticates with your Azure CLI"				
-            ]
+          ]
         },
 		  
