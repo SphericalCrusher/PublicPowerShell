@@ -2,42 +2,25 @@
 # Work in progress... -Jody Ingram
 
 # Manifest
-...
+
   "Omega": [
     {
       "botId": "AZ-OMEGA-BOT",
-      "needsChannelSelector": false,
+      "needsChannelSelector": true,
       "isNotificationOnly": false,
-      "scopes": [ "team", "personal", "groupchat" ],
+      "scopes": [ "team", "channel" ],
       "supportsFiles": true,
       "commandLists": [
         {
-          "scopes": [ "team", "groupchat" ],
+          "scopes": [ "team", "channel" ],
           "commands": [
             {
-              "title": "Command 1",
-              "description": "Description of Command 1"
+              "title": "Hey",
+              "description": "Responds back with a friendly greeting!"
             },
             {
-              "title": "Command N",
-              "description": "Description of Command N"
+              "title": "AzureCLI",
+              "description": "Authenticates with your Azure CLI"
             }
           ]
         },
-        {
-          "scopes": [ "personal", "groupchat" ],
-          "commands": [
-            {
-              "title": "Personal command 1",
-              "description": "Description of Personal command 1"
-            },
-            {
-              "title": "Personal command N",
-              "description": "Description of Personal command N"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-...
