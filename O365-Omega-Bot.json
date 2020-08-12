@@ -32,5 +32,4 @@ az login -u $AzCred.UserName -p $AzCred.GetNetworkCredential().Password
 						
           ]
         },
-
-        # More work to come
+		  
