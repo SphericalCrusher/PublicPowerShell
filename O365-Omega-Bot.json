@@ -1,0 +1,43 @@
+# Azure-based O365 Teams Bot.
+# Work in progress... -Jody Ingram
+
+# Manifest
+...
+  "Omega": [
+    {
+      "botId": "AZ-OMEGA-BOT",
+      "needsChannelSelector": false,
+      "isNotificationOnly": false,
+      "scopes": [ "team", "personal", "groupchat" ],
+      "supportsFiles": true,
+      "commandLists": [
+        {
+          "scopes": [ "team", "groupchat" ],
+          "commands": [
+            {
+              "title": "Command 1",
+              "description": "Description of Command 1"
+            },
+            {
+              "title": "Command N",
+              "description": "Description of Command N"
+            }
+          ]
+        },
+        {
+          "scopes": [ "personal", "groupchat" ],
+          "commands": [
+            {
+              "title": "Personal command 1",
+              "description": "Description of Personal command 1"
+            },
+            {
+              "title": "Personal command N",
+              "description": "Description of Personal command N"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+...
