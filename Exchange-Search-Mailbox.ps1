@@ -9,11 +9,11 @@
 # Log Level "Full" adds a complete list of search results. Can be turned off by changing "Full" to "Suppress"
 #-----------------------------------------------------------------------------------------------------------------------
 
-#Run ADd-PSSnapIn to add Exchange PowerShell Modules
+# Run Add-PSSnapIn to add Exchange PowerShell Modules
 Add-PSsnapin Microsoft.Exchange.Management.PowerShell.E2010
 
-#Customize the below script as you see fit to modify results
+# Customize the below script as you see fit to modify results.
 
-Get-Mailbox | Search-Mailbox -SearchQuery {Subject:"Your account is being used by another person!; The decision to suspend your account. Waiting for payment.; High danger. Your account was attacked.; Your account was attacked; High alert. Your account was attacked" And Received:04/14/2019..04/15/2019} -targetmailbox "jody.ingram" -targetfolder "Phish" -loglevel "full"
+Get-Mailbox | Search-Mailbox -SearchQuery {Subject:"E-MAIL SUBJECT 1; E-MAIL SUBJECT 2; E-MAIL SUBJECT 3" And Received:04/14/2019..04/15/2019} -targetmailbox "USERNAME" -targetfolder "Phish" -loglevel "full"
 
 # Add " -DeleteContent " to the end to delete the items from user's mailbox
