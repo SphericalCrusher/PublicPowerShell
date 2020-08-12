@@ -1,4 +1,5 @@
-# This script was used to cleanup WSUS for SCCM.
+# This script is used to cleanup WSUS for SCCM.
+# This cleans up expired and superseded Windows updates from the WSUS server.
 
 Write-Host -Foreground Red "Type WSUS-Cleanup to begin!"
 function WSUS-Cleanup(){
