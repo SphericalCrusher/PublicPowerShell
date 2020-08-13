@@ -1,18 +1,24 @@
-# Checks AD for any computers that have not had user logon for $DaysInactive. Automatically moves them to another AD container. 
-# Modify as needed. -Jody Ingram
+<#
+Script  :  AD-Inactive-Users.ps1
+Version :  2.0
+Date    :  11/16/2015
+Author: Jody Ingram
+Pre-reqs: N/A
+Notes: Checks AD for any computers that have not had user logon for $DaysInactive. Automatically moves them to another AD container.
+#>
 
 Import-Module ActiveDirectory 
 
-# Variables pulled from a previous script and Microsoft Git Repo.
+# Variables pulled from Microsoft Git Repo.
 
-$TestRun = $false #If true, only pretend to change the objects
-$NullStamps = $true #Do we count users who have never
+$TestRun = $false # If true, it will not actually move the objects in AD
+$NullStamps = $true
 $SearchOU = "OU=COMPANY OU,OU=COMPANY OU,DC=COMPANY,DC=com"
-$DaysInactive = 90; #How many days before an account is considered Inactive?
-$StaleOU = "OU=Users,OU=StaleAccounts,DC=Clinic,DC=Com"; #OU to place stale user accounts
-$ExceptionGroup = "CN=EXCEPTIONS-GROUP,CN=Users,DC=clinic,DC=com" #Place users in this group, and they will excluded from the purge.
+$DaysInactive = 90; # Inactive Days; adjust as needed
+$InactiveOU = "OU=Users,OU=InactiveAccounts,DC=Clinic,DC=Com"; # Adjust OU to place inactive user accounts
+$ExceptionGroup = "CN=EXCEPTIONS-GROUP,CN=Users,DC=clinic,DC=com" # Place users in this group, and they will excluded from the purge.
 $EmailRecipients = "EMAILGROUP1@company.com","EMAILGROUP2@company.com"
-$EmailTestRun = "TestUser@company.com" #Who to send report to in a test run
+$EmailTestRun = "TestUser@company.com" # Who to send report to in a test run
 $date = (Get-Date)
 $ExcelFile = ($pwd.Path.toString()) + "\su_" + $date.month + "-" + $date.day + "-" + $date.year + ".xlsx"
 
@@ -25,7 +31,7 @@ $Modified = "12/15/2018"
 $List_StandardPurge = [System.Collections.ArrayList]@()
 $List_PurgeExceptions = [System.Collections.ArrayList]@()
 $List_NullAccounts = [System.Collections.ArrayList]@()
-#Basic Functions
+
 function Get-InactiveUsers{
 	$time = (Get-Date).AddDays(-($DaysInactive))
 	$users = Get-ADUser -Filter {LastLogonTimeStamp -lt $time} -Properties LastLogonTimeStamp,LastLogonDate -SearchBase $SearchOU | Sort-Object -property LastLogonTimeStamp
@@ -39,8 +45,8 @@ function Get-InactiveUsers{
 		$users = $users + $nulls
 	}
 	$users = CleanList $users
-	if(!$users){ #if no users found
-		Write-Log "Exiting, No Stale User Accounts Found"
+	if(!$users){ 
+		Write-Log "Exiting, No Inactive User Accounts Found"
 		Finalize-Log -Clean
 		exit
 	}
@@ -74,7 +80,7 @@ function Finalize-Log{
 }
 
 function SendEmail($clean){
-	$subject = "Active Directory Stale User Purge v$version"
+	$subject = "Active Directory Inactive User Purge v$version"
 	if($List_StandardPurge.count -gt 0){
 		$body += "<B>The following Accounts have been inactive for 90 days or more:</b><br><br>`n"
 		$body += "<table>`n"
@@ -103,14 +109,14 @@ function SendEmail($clean){
         $body += "</table>`n<br>"
 	}
 	if ($Clean){
-		Send-MailMessage -to $to -from "EMAIL@Company.com" -BodyAsHTML -body $body -subject $subject -smtpServer EXCHANGESERVER
+		Send-MailMessage -to $to -from "EMAIL@Company.com" -BodyAsHTML -body $body -subject $subject -smtpServer <EXCHANGESERVER>
 	}else{
-		Send-MailMessage -to $to -from "EMAIL@Company.com" -BodyAsHTML -body $body -subject $subject -smtpServer EXCHANGESERVER -Attachments $ExcelFile
+		Send-MailMessage -to $to -from "EMAIL@Company.com" -BodyAsHTML -body $body -subject $subject -smtpServer <EXCHANGESERVER> -Attachments $ExcelFile
 	}
 
 }
 function CleanList($object){ 
-	#Removes anybody who is a member of $ExceptionGroup from the list. 
+	# Removes all users who are part of the exceptions group
 	$array = @()
 	foreach ($user in $object){
 	if ((Get-ADUser $user.SamAccountName -Properties MemberOf | Select -ExpandProperty MemberOf) -contains $ExceptionGroup){
@@ -126,20 +132,17 @@ function CleanList($object){
 return $array
 }
 function Check-Exception($object){
-	# if ((Get-ADUser $object.SamAccountName -Properties MemberOf | Select -ExpandProperty MemberOf) -contains $ExceptionGroup){
-		# return $true
-	# }
 
 	return $true
 }
-function MoveUsers($object){ #Takes List of User objects
+function MoveUsers($object){
 	foreach ($user in $object){
 		AppendHistory($user)
 		if($TestRun){
-			$user | Move-ADObject -TargetPath $StaleOU -WhatIf
+			$user | Move-ADObject -TargetPath $InactiveOU -WhatIf
 			Set-ADUser -Identity $user.SamAccountName -Enabled $false -WhatIf
 		}else{
-			$user | Move-ADObject -TargetPath $StaleOU 
+			$user | Move-ADObject -TargetPath $InactiveOU 
 			Set-ADUser -Identity $user.SamAccountName -Enabled $false
 		}
 	}
@@ -159,9 +162,9 @@ function AppendHistory($user)
 	}
 }
 function MoveObjects{
-		#Write-Log ("Moving all Inactive Users")
+		# Write-Log ("Moving all Inactive Users")
 		$AD_Object = (Get-InactiveUsers)
-		#Write-Host $AD_Object
+		# Write-Host $AD_Object
 		Write-Log ("Moving " + $AD_Object.count + " Users")
 		MoveUsers $AD_Object
 
