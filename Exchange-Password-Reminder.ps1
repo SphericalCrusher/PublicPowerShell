@@ -1,8 +1,15 @@
 <#
-This is a PowerShell script used to send out Password Reminder e-mails across a company. This has parameters from Robert Pearman's repo.
+Script  :  Exchange-Password-Reminder.ps1
+Version :  1.0
+Date    :  11/16/2016
+Author: Jody Ingram
+Pre-reqs: N/A
+Notes: This is a PowerShell script used to send out Password Reminder e-mails across a company. This has parameters from Robert Pearman's repo. Create a reoccuring Scheduled Task to run the Launch Code. 
 
-# Launch Code: PasswordReminder.ps1 -smtpServer SERVER_ADDRESS -expireInDays 14 -from "Service Desk <ServiceDesk@Email.com>" 
-# Test Code: PasswordReminder.ps1 -smtpServer SERVER_ADDRESS -expireInDays 14 -from "Service Desk <ServiceDesk@Email.com>" -Logging -LogPath "C:\Exchange\PWD_Logs" -testing -testRecipient superadmin@email.com
+INSTRUCTIONS:
+-------------
+Launch Code: Exchange-Password-Reminder.ps1 -smtpServer SERVER_ADDRESS -expireInDays 14 -from "Service Desk <ServiceDesk@Company.com>" 
+Test Code: Exchange-Password-Reminder.ps1 -smtpServer SERVER_ADDRESS -expireInDays 14 -from "Service Desk <ServiceDesk@Company.com>" -Logging -LogPath "C:\Exchange\PWD_Logs" -testing -testRecipient TestUser@Company.com
 #>
 
 param(
@@ -80,7 +87,7 @@ Write-Output "$testLabel : $testing"
 Write-Output "$testRecipientLabel : $testRecipient"
 Write-Output "$reportToLabel : $reportto"
 Write-Output "*".PadRight(25,"*")
-$users = get-aduser -filter {(Enabled -eq $true) -and (PasswordNeverExpires -eq $false)} -properties Name, PasswordNeverExpires, PasswordExpired, PasswordLastSet, EmailAddress | where { $_.passwordexpired -eq $false }
+$users = get-aduser -filter {(Enabled -eq $true) -and (PasswordNeverExpires -eq $false)} -properties Name, PasswordNeverExpires, PasswordExpired, PasswordLastSet, Address | where { $_.passwordexpired -eq $false }
 # usersCount reports back the amount of users that will be getting notified
 $usersCount = ($users | Measure-Object).Count
 Write-Output "Found $usersCount User Objects"
@@ -153,12 +160,12 @@ foreach ($user in $notifyUsers)
     # Password Reminder E-mail - Body
     $body ="
     <font face=""calibri"">
-    <center><img src=""YOURLOGOPATH.PNG""></center>
-    <p> Your Windows Password will expire $messageDays To change your password, please visit our <a href=""HTTPS://YOURSSPR"">Password Reset Portal</a>.<br>
+    <center><img src=""YOURLOGOPATH.PNG""></center> # Path to your logo
+    <p> Your Windows Password will expire $messageDays To change your password, please visit our <a href=""HTTPS://YOUR-SSPR"">Password Reset Portal</a>.<br>
     After changing your password, please don't forget to update it on your mobile devices as well.<br>
     <p>Thank you. <br> 
     </P>
-    IT | <a href=""mailto:IT@Email.com""?Subject=Password Assistance"">ServiceDesk@Email.com</a> | 706-XXX-XXXX
+    IT | <a href=""mailto:IT@Company.com""?Subject=Password Assistance"">ServiceDesk@Company.com</a> | 706-XXX-XXXX
     </font>"
        
     # Module for testing 
