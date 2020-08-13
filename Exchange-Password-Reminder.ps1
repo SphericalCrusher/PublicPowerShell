@@ -4,7 +4,7 @@ Version :  1.0
 Date    :  11/16/2016
 Author: Jody Ingram
 Pre-reqs: N/A
-Notes: This is a PowerShell script used to send out Password Reminder e-mails across a company. This has parameters from Robert Pearman's repo. Create a reoccuring Scheduled Task to run the Launch Code. 
+Notes: This is a PowerShell script used to send out Password Reminder e-mails across a company. This has parameters from Robert Pearman's repo. Create a reoccurring Scheduled Task to run the Launch Code. 
 
 INSTRUCTIONS:
 -------------
