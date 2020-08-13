@@ -1,24 +1,27 @@
-# Checks AD for any computers that have not had user logon for $DaysInactive. Automatically moves them to another AD container. 
-# Modify as needed. -Jody Ingram
+<#
+Script  :  AD-Inactive-Computers.ps1
+Version :  1.0
+Date    :  11/16/2015
+Author: Jody Ingram
+Pre-reqs: N/A
+Notes: Checks AD for any computers that have not had user logon for $DaysInactive. Automatically moves them to another AD container.
+# ----------------------------------------------------
+#>
 
 function SearchInactiveComputers{
-import-module activedirectory 
-$domain = "company.com" 
-$DaysInactive = 90 
+import-module ActiveDirectory
+$domain = "Company.com" 
+$DaysInactive = 90 # Adjust inactive days if needed
 $time = (Get-Date).Adddays(-($DaysInactive))
-$searchb = "OU=COMPANY OU,OU=COMPANY OU,DC=company,DC=com"
+$searchb = "OU=COMPANY OU,OU=COMPANY OU,DC=Company,DC=Com"
 $computers = Get-ADComputer -Filter {LastLogonTimeStamp -lt $time} -Properties LastLogonTimeStamp -SearchBase $searchb 
 
 return $computers, $time
 }
-# This works. The $time is verified to be 90 days ago, and the logon stamps seem to be right.
-# Example:
-# $list = (SearchInactiveComputers)[0]  #<-- select only first property
-# $sorted = $list | sort-object stamp
 
-function MoveComputers($object){ #Takes List of computer objects
-import-module activedirectory
-$OU = "OU=Computers,OU=StaleAccounts,DC=Clinic,DC=Com"
+function MoveComputers($object){
+import-module ActiveDirectory
+$OU = "OU=Computers,OU=Inactive Accounts,DC=Company,DC=Com" # Change AD OU location here
 Logging($object)
 foreach ($computer in $object){
 AppendHistory($computer)
@@ -30,10 +33,10 @@ Set-ADComputer -Identity $computer.SamAccountName -Enabled $false
 function CleanList($object){ 
 
 $array = @()
-$group = "CN=NoAutoPurge,CN=Users,DC=company,DC=com"
+$group = "CN=NoAutoPurge,CN=Users,DC=Company,DC=Com" # Change AD security group here
 foreach ($user in $object){
 if ((Get-ADComputer $user.SamAccountName -Properties MemberOf | Select -ExpandProperty MemberOf) -contains $group){
-Write-Host $user.SamAccountName "is a member of NoAutoPurge.. Skipping"
+Write-Host $user.SamAccountName "is a member of NoAutoPurge.. Skipping User"
 }else{
 $array = $array + $user
 }
