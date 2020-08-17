@@ -1,9 +1,11 @@
-# Microsoft System Center Configuration Manager SMB Detection Query
-#------------------------------------------------------------
-# To change the application this queries, change %APPLICATION%
-#
-# This query checks against the Programs and Features list. 
-#------------------------------------------------------------
+<#
+Script  :  SCCM-Software-Query.ps1
+Version :  1.0
+Date    :  11/16/2016
+Author: Jody Ingram
+Pre-reqs: SCCM PowerShell Module or run on a server with SCCM console installed.
+Notes: Microsoft System Center Configuration Manager SMB Detection Query. To change the application this queries, change %APPLICATION%. This query checks against the Programs and Features list. 
+#>
 
 # Import SCCM PowerShell Module. Change file path if install location is different.
 
