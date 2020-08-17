@@ -1,5 +1,9 @@
-# Use this Azure CLI script to automatically create a Windows VM in Azure. It also enables the Chef extension for DevOps Automation. 
-# Customize as needed
+# Script  :  Azure-SLI-Create-Windows-VM.sh
+# Version :  1.0
+# Date    :  1/1/2018
+# Author: Jody Ingram
+# Pre-reqs: N/A
+# Notes: Use this Azure CLI script to automatically create a Windows VM in Azure. It also enables the Chef extension for DevOps Automation. Customize as needed.
 
 $vm1 = "AzureVMName"
 $svc = "ServiceName"
