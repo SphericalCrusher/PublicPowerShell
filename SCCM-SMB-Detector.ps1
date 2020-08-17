@@ -13,6 +13,8 @@ Import-Module ‘C:\Program Files (x86)\Microsoft Configuration Manager\AdminCon
 $CMSite=”$(Get-PSDrive –PSProvider CMSite)`:”
 Set-Location $CMSite
 
+# Start Query. Can also be ran directly in SCCM Device Collections. 
+
 select 
 
 SMS_R_SYSTEM.ResourceID,SMS_R_SYSTEM.ResourceType,SMS_R_SYSTEM.Name,SMS_R_SYSTEM.SMSUniqueIdentifier,SMS_R_SYSTEM.Resource
@@ -22,5 +24,6 @@ DomainORWorkgroup,SMS_R_SYSTEM.Client from SMS_R_System inner join SMS_G_System_
 SMS_G_System_ADD_REMOVE_PROGRAMS.ResourceId = SMS_R_System.ResourceId where SMS_G_System_ADD_REMOVE_PROGRAMS.DisplayName 
 
 like "%SMB2%"
+# End Query
 
 Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters | ForEach-Object {Get-ItemProperty $_.pspath}
