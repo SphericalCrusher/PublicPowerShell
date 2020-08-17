@@ -5,7 +5,6 @@ Date    :  11/16/2015
 Author: Jody Ingram
 Pre-reqs: N/A
 Notes: Checks AD for any computers that have not had user logon for $DaysInactive. Automatically moves them to another AD container.
-# ----------------------------------------------------
 #>
 
 function SearchInactiveComputers{
