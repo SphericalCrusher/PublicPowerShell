@@ -14,6 +14,5 @@ $CMSite=”$(Get-PSDrive –PSProvider CMSite)`:”
 Set-Location $CMSite
 
 # Start Query. Can also be ran directly in SCCM Device Collections.
-
 select SMS_R_System.ResourceId, SMS_R_System.ResourceType, SMS_R_System.Name, SMS_R_System.SMSUniqueIdentifier, SMS_R_System.ResourceDomainORWorkgroup, SMS_R_System.Client from  SMS_R_System where SMS_R_System.Client = "0"
 # End Query
