@@ -1,7 +1,11 @@
-# Microsoft System Center Configuration Manager SCCM Client Detector
-#------------------------------------------------------------
-# This will report on machines that do not have the SCCM client installed or is corrupt.
-#------------------------------------------------------------
+<#
+Script  :  SCCM-Query-No-Client.ps1
+Version :  1.0
+Date    :  11/16/2016
+Author: Jody Ingram
+Pre-reqs: SCCM PowerShell Module or run on a server with SCCM console installed.
+Notes: Microsoft System Center Configuration Manager SCCM Client Detector. This will report on machines that do not have the SCCM client installed or is corrupt.
+#>
 
 # Import SCCM PowerShell Module. Change file path if install location is different.
 
