@@ -5,7 +5,6 @@ Date    :  8/20/2018
 Author: Jody Ingram
 Pre-reqs: DesktopInfo.exe and desktopinfo.ini 
 Notes: This will deploy and run DesktopInfo.exe with a preference table you can modify. This works great in a Citrix or VDI environment.
-# ----------------------------------------------------
 #>
 
 # Local machine file path for DesktopInfo
