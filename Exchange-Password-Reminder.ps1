@@ -8,6 +8,7 @@ Notes: This is a PowerShell script used to send out Password Reminder e-mails ac
 
 INSTRUCTIONS:
 -------------
+
 Launch Code: Exchange-Password-Reminder.ps1 -smtpServer SERVER_ADDRESS -expireInDays 14 -from "Service Desk <ServiceDesk@Company.com>" 
 Test Code: Exchange-Password-Reminder.ps1 -smtpServer SERVER_ADDRESS -expireInDays 14 -from "Service Desk <ServiceDesk@Company.com>" -Logging -LogPath "C:\Exchange\PWD_Logs" -testing -testRecipient TestUser@Company.com
 #>
