@@ -5,7 +5,6 @@ Date    :  1/16/2019
 Author: Jody Ingram
 Pre-reqs: N/A
 Notes: This script sends an e-mail when any Active Directory Account gets locked out. It can also automatically unlock a specific username. Run instructions are below.
-# ----------------------------------------------------
 #>
 
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
