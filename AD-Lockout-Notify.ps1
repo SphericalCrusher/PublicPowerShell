@@ -7,6 +7,7 @@ Pre-reqs: N/A
 Notes: This script sends an e-mail when any Active Directory Account gets locked out. It can also automatically unlock a specific username. Run instructions are below.
 
 INSTRUCTIONS:
+-------------
 
 To run this script, you will need to create a scheduled task:
 
