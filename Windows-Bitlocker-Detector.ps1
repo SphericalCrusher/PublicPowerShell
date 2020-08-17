@@ -1,11 +1,15 @@
-# Bitlocker Detector Script
-# Redesigned by Jody Ingram, Originally written by Martin Pugh
-# Modified April 1st, 2019
-
+<#
+Script  :  Windows-Bitlocker-Detector.ps1
+Version :  2.0
+Date    :  4/1/2019
+Author: Redesigned by Jody Ingram, Originally written by Martin Pugh
+Pre-reqs: N/A
+Notes: Bitlocker Detector Script
+#>
 
 [CmdletBinding()]
 Param (
-    [string]$SearchBase = "OU=YourOUforWorkstations,DC=Your,DC=Domain"
+    [string]$SearchBase = "OU=YourOUforWorkstations,DC=Your,DC=Domain" # Modify your AD OU here for Computer Objects
 )
 
 Try { Import-Module ActiveDirectory -ErrorAction Stop }
