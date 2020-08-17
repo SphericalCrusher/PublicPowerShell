@@ -6,13 +6,13 @@ Author: Jody Ingram
 Pre-reqs: N/A
 Notes: This script searches all Exchange mailboxes for specific criteria and copies the e-mail out to another user's mailbox.
 
-# USAGE INSTRUCTIONS
+INSTRUCTIONS
 -----------------------------------------------------------------------------------------------------------------------
-# Change Subject: "E-MAIL SUBJECT" to whatever Subject string you want to lookup. Add a comma ";" between subjects to use multiple at once. 
-# Changed "And Received" date to the before and after dates you want to search for
-# Target MailBox is where the e-mails will be copied to. Target Folder is which Inbox folder it copies to.
-# Log Level "Full" adds a complete list of search results. Can be turned off by changing "Full" to "Suppress"
-#-----------------------------------------------------------------------------------------------------------------------
+Change Subject: "E-MAIL SUBJECT" to whatever Subject string you want to lookup. Add a comma ";" between subjects to use multiple at once. 
+Changed "And Received" date to the before and after dates you want to search for
+Target MailBox is where the e-mails will be copied to. Target Folder is which Inbox folder it copies to.
+Log Level "Full" adds a complete list of search results. Can be turned off by changing "Full" to "Suppress"
+-----------------------------------------------------------------------------------------------------------------------
 #>
 
 # Run Add-PSSnapIn to add Exchange PowerShell Modules
