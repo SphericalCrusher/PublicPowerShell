@@ -1,5 +1,11 @@
-# Top Exchange Mailboxes In Size
-
+<#
+Script  :  Exchange-Top-Mailboxes.ps1
+Version :  1.0
+Date    :  11/16/2016
+Author: Jody Ingram
+Pre-reqs: N/A
+Notes: This script reports the top Exchange mailboxes in size
+#>
 
 # Power-Shell Snapin for Exchange Management Shell
 
