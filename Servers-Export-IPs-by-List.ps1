@@ -1,7 +1,6 @@
 # Export IP Addresses from Server List
 # Jody Ingram
 
-
 # Import the list of servers you have. You can do CSV or TXT files.
 $servers = Get-Content C:\temp\powershell\ServerList.txt
 
