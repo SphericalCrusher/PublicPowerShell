@@ -4,7 +4,7 @@ Version :  1.0
 Date    :  6/2/2020
 Author: Jody Ingram
 Pre-reqs: N/A
-Notes: This script reports on the last time an AD account is locked out. Specifically, referencing event IDs that report the lock, not failed authentication attempts.
+Notes: This script reports on the last time an AD account is locked out and which device it occured on. Specifically, referencing event IDs that report the lock, not failed authentication attempts.
 #>
 
 $ErrorActionPreference = "SilentlyContinue"
