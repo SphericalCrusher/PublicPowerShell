@@ -20,6 +20,7 @@ $PVSServerName = "Citrix-PVS-Server-Name"
 
 $vDiskName = "vDISK-Name"
 $PVSUpdater = "Enter The PVS Updater Device Name Here."
+$vDiskSize = "Size-In-MB"
 
 # Defines the name of the Device Collection for automation purposes. Change as needed. 
 
@@ -28,7 +29,7 @@ $DeviceCollection = "Device Collection"
 
 # Creates the new vDisk to the Citrix PVS Store. Modify SizeinMB to your requirements.
 
-Start-PVSCreateDisk -Name "$vDiskName" -Size "SizeinMB" -StoreName "$StoreName" -ServerName "$PVSServerName" -SiteName "$SiteName" -VHDX
+Start-PVSCreateDisk -Name "$vDiskName" -Size "$vDiskSize" -StoreName "$StoreName" -ServerName "$PVSServerName" -SiteName "$SiteName" -VHDX
 
 
 # Adds new vDisk to PVS Store
