@@ -48,13 +48,14 @@ Add-PVSDiskLocatorToDevice -SiteName "$SiteName" -StoreName "$StoreName" -DiskLo
 
 # Assigns the vDisk to devices. Configure as needed.
 
-
-
 Add-PVSDiskLocatorToDevice -SiteName "$SiteName" -StoreName "$StoreName" -DiskLocatorName "$vDiskName" -DeviceName "$PVSUpdater" -RemoveExisting
 
 
 # Disables VMWare's Customer Experience Program Prompt
+
 Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $false
 
+
 # Powers on the VM using VMWare CLI
+
 Start-VM -VM $PVSUpdater -RunAsync
