@@ -14,14 +14,17 @@ asnp Citrix.*
 # START EDITING
 
 # If creating or reconfiguring this script, only modify the below variables to customize to your Citrix environment and vDisk configurations.
-# If you don't need to label all of the settings, just comment some out. Example: #$vDiskOriginalFile.
+# If you don't need to label all of the vDisk settings, just comment some out. Example: #$vDiskOriginalFile.
 
 $StoreName = "STORE-NAME"
 $SiteName = "SITE-NAME"
 $PVSServerName = "Citrix-PVS-Server-Name"
 $vDiskName = "vDISK-Name" # Defines the Citrix PVS vDISK name. DO NOT ADD FILE EXTENSION.
 $PVSUpdater = "Enter The PVS Updater Device Name Here."
-$vDiskSize = "Size-In-MB"
+$DeviceCollection = "Device Collection" # Defines the name of the Device Collection for automation purposes. Change as needed. 
+
+#vDisk Labels 
+$vDiskSize = "Size-In-MB" # Enter the size in MB
 $vDiskDescription = "ADD THE DESCRIPTION FOR VDISK IMAGE HERE"
 $vDiskDate = "Date" # Date Format Example: 3/24/2022 11:16:19 AM
 $vDiskAuthor = "Author Name"
@@ -29,7 +32,7 @@ $vDiskTitle = "Title"
 $vDiskCompany = "Company Name"
 $vDiskInternalName = "Internal Name"
 $vDiskOriginalFile = "Original File Name"
-$DeviceCollection = "Device Collection" # Defines the name of the Device Collection for automation purposes. Change as needed. 
+
 
 # END EDITING 
 
