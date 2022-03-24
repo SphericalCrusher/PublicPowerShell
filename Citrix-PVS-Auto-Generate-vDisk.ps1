@@ -16,7 +16,6 @@ asnp Citrix.*
 # If creating or reconfiguring this script, only modify the below variables to customize to your Citrix environment and vDisk configurations.
 # If you don't need to label all of the settings, just comment some out. Example: #$vDiskOriginalFile.
 
-
 $StoreName = "STORE-NAME"
 $SiteName = "SITE-NAME"
 $PVSServerName = "Citrix-PVS-Server-Name"
@@ -30,11 +29,7 @@ $vDiskTitle = "Title"
 $vDiskCompany = "Company Name"
 $vDiskInternalName = "Internal Name"
 $vDiskOriginalFile = "Original File Name"
-
-
-# Defines the name of the Device Collection for automation purposes. Change as needed. 
-
-$DeviceCollection = "Device Collection"
+$DeviceCollection = "Device Collection" # Defines the name of the Device Collection for automation purposes. Change as needed. 
 
 # END EDITING 
 
