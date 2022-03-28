@@ -1,9 +1,11 @@
-# Script  :  Azure-CLI-Arc-Deploy-VM-to-VMWare.sh
-# Version :  1.0
-# Date    :  3/28/2021
-# Author: Jody Ingram
-# Pre-reqs: VMWare vSphere CLI 6.7+, VMWare VM Template, and a completed config_avs.json configuration.
-# Notes: Use this Azure CLI PowerShell script to automatically deploy a VM using Azure Arc to your VMWare Environment. This service is called Azure VMWare Solution (AVS). 
+<#
+Script: Azure-CLI-Arc-Deploy-VM-to-VMWare.sh
+Version: 1.0
+Date: 3/28/2021
+Author: Jody Ingram
+Pre-reqs: VMWare vSphere CLI 6.7+, VMWare VM Template, and a completed config_avs.json configuration.
+Notes: Use this Azure CLI PowerShell script to automatically deploy a VM using Azure Arc to your VMWare Environment. This service is called Azure VMWare Solution (AVS). 
+#>
 
 
 # Clones the Azure Arc repo from Github into the script
