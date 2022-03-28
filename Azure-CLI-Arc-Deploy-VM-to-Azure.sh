@@ -7,7 +7,7 @@
 
 New-AzResourceGroupDeployment `
   -ResourceGroupName 'Name of Resource Group' `
-  -TemplateFile ~/AzureArcLinuxCustomScriptExtensions.json `
+  -TemplateFile ~/AzureArcTemplateFileName.json `
   -TemplateParameterObject @{
     MachineName = 'Machine Name of ARC'
     Location = 'Location of ARM VM'
