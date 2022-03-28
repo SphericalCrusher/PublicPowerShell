@@ -7,7 +7,8 @@
 
 
 # Clones the Azure Arc repo from Github into the script
-  git clone https://github.com/microsoft/azure_arc.git
+
+git clone https://github.com/microsoft/azure_arc.git
 
 
 # Bypass execution policy unless signed
