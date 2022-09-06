@@ -7,7 +7,7 @@ Notes: Checks a list of servers for their built-in Windows Administrator account
 #>
 
 # Imports VM Server List to CSV
-$ServerList = Import-Csv -Path .\AzureVMServerList.csv # Change path and file name as needed
+$ServerList = Import-Csv -Path .\VMServerList.csv # Change path and file name as needed
 
 function Get-SWLocalAdmin {
     [CmdletBinding()]
