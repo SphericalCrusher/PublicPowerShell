@@ -33,6 +33,7 @@ Connect-Azure AD -Credential (Get-Credential)
 
 # Deploy using your resource management method such as ARM, Terraform,etc. The IaC can be called or added to this script.
 
+
 # -----------------------------------------
 # DEPLOY TO AWS
 # -----------------------------------------
