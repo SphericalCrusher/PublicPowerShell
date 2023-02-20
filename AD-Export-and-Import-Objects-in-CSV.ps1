@@ -1,5 +1,5 @@
 <#
-Script  :  AD - Export and Import Objects in CSV.ps1
+Script  :  AD-Export-and-Import-Objects-in-CSV.ps1
 Version :  1.0
 Date    :  2/20/2023
 Author: Jody Ingram
