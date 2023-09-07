@@ -19,7 +19,7 @@ try {
 
     [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor 3072;
 
-    # This downloads the install package. This may be excluded if deployed directly from Altiris.
+    # This downloads the install package. This may be excluded if deployed directly from your config manager.
     Invoke-WebRequest -UseBasicParsing -Uri "https://aka.ms/azcmagent-windows" -TimeoutSec 30 -OutFile "$env:TEMP\install_windows_azcmagent.ps1";
 
     # This installs the Azure Arc hybrid agent to the local VM
