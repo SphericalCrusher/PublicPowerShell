@@ -9,7 +9,7 @@ Instructions: Run this script as a report query in your config manager: SCCM/MCM
 #>
 
 # Imports a file containing a list of usernames, seperated by line
-$InputFile = 'C:\Tools\EmailList.txt' 
+$InputFile = 'C:\Tools\UserList.txt' 
 
 # Exports the file containing the requested information
 $OutputFile = 'C:\Tools\OutputList.txt' 
