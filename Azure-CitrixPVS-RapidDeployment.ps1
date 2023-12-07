@@ -26,5 +26,4 @@ az login
 az account set --subscription $subscription
 
 # Creates a new Managed Disk using the .VHD image config in the Storage Blob
-
 az disk create --resource-group $resourceGroup --name $diskName --source $citrixBDM --os-type $osType --public-network-access $publicNetworkAccess --size-gb $diskSize --sku $storageSKU
