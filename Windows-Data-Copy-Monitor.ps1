@@ -20,7 +20,7 @@ while ($true) {
 
   # Check if no new files for threshold time
   if ((Get-Date) -gt ($lastWriteTime.LastWriteTime.AddMinutes($thresholdMinutes))) {
-    $body = "No new files written to '$fileShare' for $thresholdMinutes minutes. Data transfer to the folder might be incomplete."
+    $body = "No new files written to '$fileShare' for $thresholdMinutes minutes. Data transfer may be complete."
 
     # Send email notification
     Send-MailMessage -From $fromAddress -To $toAddress -Subject "Potential Data Transfer Completion" -Body $body -SmtpServer $smtpServer
