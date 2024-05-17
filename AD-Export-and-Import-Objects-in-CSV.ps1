@@ -7,6 +7,8 @@ Pre-reqs: Active Directory Access
 Notes: This script exports all AD objects in one AD group as a .csv and imports them into another AD group.
 #>
 
+# Import Active Directory Module
+Import-Module ActiveDirectory
 
 # AD Group - Export and Import CSV
 
