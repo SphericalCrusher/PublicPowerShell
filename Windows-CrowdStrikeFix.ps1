@@ -3,7 +3,7 @@ Script  :  Windows-CrowdStrikeFix.ps1
 Version :  1.0
 Date    :  7/19/2024
 Author: Jody Ingram
-Notes: This script deletes the CrowdStrike driver file that is causing BSODs and reboots back into Normal Mode. The machine will already need to be in Safe Mode at this point.
+Notes: Run As Admin. This script deletes the CrowdStrike driver file that is causing BSODs and reboots back into Normal Mode. The machine will already need to be in Safe Mode at this point.
 #>
 
 $csFilePath = "C:\Windows\System32\drivers\C-00000291*.sys"
